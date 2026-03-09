@@ -123,9 +123,65 @@ docker run -it --rm shellserver-app
     }
 ```
 
+Completo hasta sección 5:
+```json
+{
+  "mcpServers": {
+    "weather": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "C:\\Users\\lftob\\Documents\\PROYECTOS_ESTUDIO\\ML_Engineer\\MCP_Udemy\\quickstart-resources\\weather-server-python",
+        "run",
+        "weather.py"
+      ]
+    },
+    "langgraph-docs-mcp": {
+      "command": "uvx",
+      "args": [
+        "--from",
+        "C:\\Users\\lftob\\Documents\\PROYECTOS_ESTUDIO\\ML_Engineer\\MCP_Udemy\\mcpdoc",
+        "mcpdoc",
+        "--urls",
+        "LangGraph:https://langchain-ai.github.io/langgraph/llms.txt LangChain:https://python.langchain.com/llms.txt",
+        "--transport",
+        "stdio"
+      ]
+    },
+    "shell": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "C:\\Users\\lftob\\Documents\\PROYECTOS_ESTUDIO\\ML_Engineer\\MCP_Udemy\\MCP_Crash_Course_Udemy\\05-seccion_MCP_local\\shellserver",
+        "run",
+        "server.py"
+      ]
+    },    
+    "docker-shell": {
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "--init",
+        "-e",
+        "DOCKER_CONTAINER=true",
+        "shellserver-app"
+      ]
+    }
+  },
+  "preferences": {
+    "coworkWebSearchEnabled": true,
+    "coworkScheduledTasksEnabled": false,
+    "ccdScheduledTasksEnabled": false,
+    "sidebarMode": "chat"
+  }
+}
+```
+
 ## Sección 6: Conexión con clientes LLM - "tool calling mechanisms" y MCP
 
-### 1. Primera práctica: langchain + MCP Adapters
+### 1. Práctica: langchain + MCP Adapters
 
 https://github.com/langchain-ai/langchain-mcp-adapters
 
@@ -145,6 +201,43 @@ LANGSMITH_PROJECT="nombre_del_proyecto_creado_en_langsmith"
 uv add langgraph-cli --dev
 uv add "langgraph-cli[inmem]" --dev
 ```
+## Sección 7: Prompts y Resources
+
+### 1. Práctica Prompts
+
+https://github.com/emarco177/mcp-crash-course/tree/project/prompts
+
+Crear nuevamente la carpeta del proyecto, iniciar uv init, crear entorno con uv venv, activar y configurar:
+```
+uv add fastmcp
+```
+Luego de tener el main.py, se configura en Claude (solo sirve con transport STDIO):
+```
+,
+    "research-prompt-mcp": {
+      "command": "c:\\Users\\lftob\\Documents\\PROYECTOS_ESTUDIO\\ML_Engineer\\MCP_Udemy\\MCP_Crash_Course_Udemy\\07-seccion_prompts\\prompts\\.venv\\Scripts\\python.exe",
+      "args": ["C:\\Users\\lftob\\Documents\\PROYECTOS_ESTUDIO\\ML_Engineer\\MCP_Udemy\\MCP_Crash_Course_Udemy\\07-seccion_prompts\\prompts\\main.py"]
+    }
+```
+Probar desde MCP Inspector con transport HTTP:
+Ejecuta el main.py de prompt con el transport en HTTP y luego en otra terminal el MCP inspector:
+```
+uv run main.py
+npx @modelcontextprotocol/inspector
+```
+![alt text](assets/image.png)
+
+
+
+
+
+
+
+
+
+
+
+
 ## Configuración del entorno:
 
 Configuración:
