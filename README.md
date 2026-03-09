@@ -123,6 +123,17 @@ docker run -it --rm shellserver-app
     }
 ```
 
+## Sección 6: Conexión con clientes LLM - "tool calling mechanisms" y MCP
+
+### 1. Primera práctica: langchain + MCP Adapters
+
+https://github.com/langchain-ai/langchain-mcp-adapters
+
+Crear nuevamente la carpeta del proyecto, iniciar uv init, crear entorno con uv venv, activar y configurar:
+```
+uv add python-dotenv langchain-mcp-adapters langgraph langchain-google-genai langchain-ollama
+```
+
 ## Configuración del entorno:
 
 Configuración:
