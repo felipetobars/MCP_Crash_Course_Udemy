@@ -131,9 +131,20 @@ https://github.com/langchain-ai/langchain-mcp-adapters
 
 Crear nuevamente la carpeta del proyecto, iniciar uv init, crear entorno con uv venv, activar y configurar:
 ```
-uv add python-dotenv langchain-mcp-adapters langgraph langchain-google-genai langchain-ollama
+uv add python-dotenv langchain langchain-mcp-adapters langgraph langchain-google-genai langchain-ollama isort rich
+```
+Para hacer tracing se deben usar las variables de entorno para el proyecto en LangSmith (se necesita que el entorno sea python >= 3.11):
+```
+LANGSMITH_TRACING=true
+LANGSMITH_ENDPOINT=https://api.smith.langchain.com
+LANGSMITH_API_KEY=aqui_va_la_api_key
+LANGSMITH_PROJECT="nombre_del_proyecto_creado_en_langsmith"
 ```
 
+```
+uv add langgraph-cli --dev
+uv add "langgraph-cli[inmem]" --dev
+```
 ## Configuración del entorno:
 
 Configuración:
