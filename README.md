@@ -227,8 +227,48 @@ npx @modelcontextprotocol/inspector
 ```
 ![alt text](assets/image.png)
 
+### 2. Practica Resources
 
+Cada tipo de resource tiene una forma estándar de definirse en MCP (FastMCP): https://modelcontextprotocol.info/docs/concepts/resources/
 
+- file:///home/user/documents/report.pdf
+- postgres://database/customers/schema
+- screen://localhost/display1
+
+Se verán recursos **Estáticos** y **Dinámicos**:
+
+Configurar entorno con uv, instalar dependencias y ejecutar:
+```
+uv init
+uv venv
+".venv/Scripts/activate"
+uv add fastmcp
+```
+#### OBJETIVO DEL main.py:
+```
+Mini Pokédex Lite - Demostración de Recursos FastMCP 2.0 (Versión Asíncrona)
+
+Este demo enseña recursos de MCP proporcionando una interfaz simple de Pokédex.
+Demuestra:
+- Listado estático de recursos con @mcp.resource (async)
+- Plantillas dinámicas de recursos con parámetros URI (async)
+- Integración con API externa usando PokeAPI (async httpx)
+- Manejo de errores y respuestas JSON
+- Patrones adecuados de async/await
+
+Uso:
+  python main.py
+
+Recursos de MCP proporcionados:
+- poke://pokemon/1 (Bulbasaur)
+- poke://pokemon/4 (Charmander)
+- poke://pokemon/7 (Squirtle)
+- poke://pokemon/{id} (Cualquier Pokémon por ID)
+```
+Claude Desktop no soporta recursos con transport HTTP, por lo que se debe usar el transport STDIO para probarlo. Además, sólo soporta recursos estáticos.
+Cursor tampoco.
+**NOTA:** En el curso usan claude code que sí soporta recursos dinámicos. Como no tengo Claude Code decidí convertir los resources en tools
+```
 
 
 
