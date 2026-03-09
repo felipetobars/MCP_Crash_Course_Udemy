@@ -57,7 +57,71 @@ uv add fastmcp
 Agregar páginas a los docs de Cursor: https://github.com/modelcontextprotocol/python-sdk y https://modelcontextprotocol.io/
 Crear carpeta .cursor rules con el archivo rules.md para las reglas de Cursor. y usar plantillas en https://cursor.directory/fastapi-python-cursor-rules
 
+Para ejecutar el MCP server en Docker, dentro de la carpeta de shellserver se crea el Dockerfile y se ejecuta:
+```
+docker build -t shellserver-app .
+docker run -it --rm shellserver-app
+```
+**Hasta ahora el JSON de Claude corría todo este MCP Server con uv:**
+```json
+{
+  "mcpServers": {
+    "weather": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "C:\\Users\\lftob\\Documents\\PROYECTOS_ESTUDIO\\ML_Engineer\\MCP_Udemy\\quickstart-resources\\weather-server-python",
+        "run",
+        "weather.py"
+      ]
+    },
+    "langgraph-docs-mcp": {
+      "command": "uvx",
+      "args": [
+        "--from",
+        "C:\\Users\\lftob\\Documents\\PROYECTOS_ESTUDIO\\ML_Engineer\\MCP_Udemy\\mcpdoc",
+        "mcpdoc",
+        "--urls",
+        "LangGraph:https://langchain-ai.github.io/langgraph/llms.txt LangChain:https://python.langchain.com/llms.txt",
+        "--transport",
+        "stdio"
+      ]
+    },
+    "shell": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "C:\\Users\\lftob\\Documents\\PROYECTOS_ESTUDIO\\ML_Engineer\\MCP_Udemy\\MCP_Crash_Course_Udemy\\05-seccion_MCP_local\\shellserver",
+        "run",
+        "server.py"
+      ]
+    }
+  },
+  "preferences": {
+    "coworkWebSearchEnabled": true,
+    "coworkScheduledTasksEnabled": false,
+    "ccdScheduledTasksEnabled": false,
+    "sidebarMode": "chat"
+  }
+}
+```
 
+**Pero para que se pueda ejecutar usando el contenedor de Docker:**
+```json
+    },    
+    "docker-shell": {
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "--init",
+        "-e",
+        "DOCKER_CONTAINER=true",
+        "shellserver-app"
+      ]
+    }
+```
 
 ## Configuración del entorno:
 
