@@ -179,7 +179,7 @@ Completo hasta sección 5:
 }
 ```
 
-## Sección 6: Conexión con clientes LLM - "tool calling mechanisms" y MCP
+## Sección 6 y 8: Conexión con clientes LLM - "tool calling mechanisms" y MCP
 
 ### 1. Práctica: langchain + MCP Adapters
 
@@ -201,6 +201,14 @@ LANGSMITH_PROJECT="nombre_del_proyecto_creado_en_langsmith"
 uv add langgraph-cli --dev
 uv add "langgraph-cli[inmem]" --dev
 ```
+
+### 2. Práctica: Multi Server Client
+
+Se ajustó el weather_server.py para enviarle el nombre de una ciudad y que obtenga su latitud y longitud usando geopy, y luego con esa información obtener el clima de esa ciudad usando la API de Open-Meteo.
+
+Se debe ejecutar weather_server.py con el transport en SSE y luego en otra terminal el langchain_client.py
+```
+
 ## Sección 7: Prompts y Resources
 
 ### 1. Práctica Prompts
